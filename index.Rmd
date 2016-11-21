@@ -29,12 +29,32 @@ Animated list
 
 ---
 
-## Motion Chart
+## Some code
 
-```{r echo = FALSE, results = 'asis', message = FALSE}
-require(googleVis)
-M1 = gvisMotionChart(Fruits, idvar = 'Fruit', timevar = 'Year')
-plot(M1)
+```{r echo = TRUE, results = 'asis', message = FALSE}
+library(shiny)
+shinyUI(fluidPage(
+        titlePanel("Predict Diamond price from its weight"),
+        sidebarLayout(
+                sidebarPanel(
+                        sliderInput("sliderCarat", "How many carats is the diamond?", 0.2, 4.0, value = 0.8),
+                        selectInput("selectCut", "What is the cut of the diamond?", c("Fair"="Fair","Good"="Good",
+                                "Very Good"="Very Good","Premium"="Premium", "Ideal"="Ideal")),
+                        selectInput("selectColor", "What is the color of the diamond?", 
+                                    c("D"="D","E"="E","F"="F","G"="G","H"="H",
+                                      "I"="I","J"="J")),
+                        checkboxInput("showModel1", "Show/Hide model for selected features", value = TRUE),
+                        checkboxInput("showModel2", "Show/Hide model for all diamonds", value = TRUE)
+                ),
+                mainPanel(
+                        plotOutput("plot1"),
+                        h3("Predicted price from selected features:"),
+                        textOutput("pred1"),
+                        h3("Predicted price from all diamonds:"),
+                        textOutput("pred2")
+                )
+        )
+))
 ```
 
 

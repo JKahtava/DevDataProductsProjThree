@@ -74,10 +74,107 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Motion Chart</h2>
+    <h2>Some code</h2>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">library(shiny)
+shinyUI(fluidPage(
+        titlePanel(&quot;Predict Diamond price from its weight&quot;),
+        sidebarLayout(
+                sidebarPanel(
+                        sliderInput(&quot;sliderCarat&quot;, &quot;How many carats is the diamond?&quot;, 0.2, 4.0, value = 0.8),
+                        selectInput(&quot;selectCut&quot;, &quot;What is the cut of the diamond?&quot;, c(&quot;Fair&quot;=&quot;Fair&quot;,&quot;Good&quot;=&quot;Good&quot;,
+                                &quot;Very Good&quot;=&quot;Very Good&quot;,&quot;Premium&quot;=&quot;Premium&quot;, &quot;Ideal&quot;=&quot;Ideal&quot;)),
+                        selectInput(&quot;selectColor&quot;, &quot;What is the color of the diamond?&quot;, 
+                                    c(&quot;D&quot;=&quot;D&quot;,&quot;E&quot;=&quot;E&quot;,&quot;F&quot;=&quot;F&quot;,&quot;G&quot;=&quot;G&quot;,&quot;H&quot;=&quot;H&quot;,
+                                      &quot;I&quot;=&quot;I&quot;,&quot;J&quot;=&quot;J&quot;)),
+                        checkboxInput(&quot;showModel1&quot;, &quot;Show/Hide model for selected features&quot;, value = TRUE),
+                        checkboxInput(&quot;showModel2&quot;, &quot;Show/Hide model for all diamonds&quot;, value = TRUE)
+                ),
+                mainPanel(
+                        plotOutput(&quot;plot1&quot;),
+                        h3(&quot;Predicted price from selected features:&quot;),
+                        textOutput(&quot;pred1&quot;),
+                        h3(&quot;Predicted price from all diamonds:&quot;),
+                        textOutput(&quot;pred2&quot;)
+                )
+        )
+))
+</code></pre>
+
+<p>&lt;!--html_preserve--&gt;<div class="container-fluid"></p>
+
+<h2>Predict Diamond price from its weight</h2>
+
+<div class="row">
+<div class="col-sm-4">
+<form class="well">
+<div class="form-group shiny-input-container">
+<label class="control-label" for="sliderCarat">How many carats is the diamond?</label>
+<input class="js-range-slider" id="sliderCarat" data-min="0.2" data-max="4" data-from="0.8" data-step="0.05" data-grid="true" data-grid-num="9.5" data-grid-snap="false" data-keyboard="true" data-keyboard-step="1.31578947368421" data-drag-interval="true" data-data-type="number" data-prettify-separator=","/>
+</div>
+
+<div class="form-group shiny-input-container">
+<label class="control-label" for="selectCut">What is the cut of the diamond?</label>
+<div>
+<select id="selectCut"><option value="Fair" selected>Fair</option>
+<option value="Good">Good</option>
+<option value="Very Good">Very Good</option>
+<option value="Premium">Premium</option>
+<option value="Ideal">Ideal</option></select>
+<script type="application/json" data-for="selectCut" data-nonempty="">{}</script>
+</div>
+
+<p></div></p>
+
+<div class="form-group shiny-input-container">
+<label class="control-label" for="selectColor">What is the color of the diamond?</label>
+<div>
+<select id="selectColor"><option value="D" selected>D</option>
+<option value="E">E</option>
+<option value="F">F</option>
+<option value="G">G</option>
+<option value="H">H</option>
+<option value="I">I</option>
+<option value="J">J</option></select>
+<script type="application/json" data-for="selectColor" data-nonempty="">{}</script>
+</div>
+
+<p></div></p>
+
+<div class="form-group shiny-input-container">
+<div class="checkbox">
+<label>
+<input id="showModel1" type="checkbox" checked="checked"/>
+<span>Show/Hide model for selected features</span>
+</label>
+</div>
+
+<p></div></p>
+
+<div class="form-group shiny-input-container">
+<div class="checkbox">
+<label>
+<input id="showModel2" type="checkbox" checked="checked"/>
+<span>Show/Hide model for all diamonds</span>
+</label>
+</div>
+
+<p></div>
+</form>
+</div></p>
+
+<div class="col-sm-8">
+<div id="plot1" class="shiny-plot-output" style="width: 100% ; height: 400px"></div>
+<h3>Predicted price from selected features:</h3>
+<div id="pred1" class="shiny-text-output"></div>
+<h3>Predicted price from all diamonds:</h3>
+<div id="pred2" class="shiny-text-output"></div>
+</div>
+
+<p></div>
+</div>&lt;!--/html_preserve--&gt;</p>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -100,7 +197,7 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Motion Chart'>
+        data-slide=3 title='Some code'>
          3
       </a>
     </li>
