@@ -1,0 +1,32 @@
+slidifyDemo
+========================================================
+author: Jussi Kahtava   
+date: 21st November, 2016
+autosize: true
+
+First Slide
+========================================================
+
+Animated list
+
+> 1. Point 1
+> 2. Point 2
+> 3. Point 3
+
+Slide With Code
+========================================================
+
+```{r}
+summary(cars)
+```
+
+Slide With Plot
+========================================================
+
+## Motion Chart
+
+```{r echo = FALSE, results = 'asis', message = FALSE}
+require(googleVis)
+M1 = gvisMotionChart(Fruits, idvar = 'Fruit', timevar = 'Year')
+plot(M1)
+```
