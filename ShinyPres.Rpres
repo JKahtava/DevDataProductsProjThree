@@ -23,40 +23,20 @@ The shiny app can be found at:
 https://jkahtava.shinyapps.io/devdataproductsprojthree/
 
 
-Slide With Code
+
+Shiny ui.R part I
+========================================================
+
+```{r echo = TRUE, results = 'asis', message = FALSE}
+library(ggplot2)
+model1 <- lm(price ~ carat, data = diamonds)
+pred1 <- predict(model1, newdata = data.frame(diamonds[diamonds$cut == "Ideal",]))
+    
+```
+
+Shiny ui.R part II
 ========================================================
 
 ```{r}
-summary(cars)
-```
-
-Slide With Plot
-========================================================
-
-## ui.R code
-
-```{r echo = TRUE, results = 'asis', message = FALSE}
-library(shiny)
-shinyUI(fluidPage(
-        titlePanel("Predict Diamond price from its weight"),
-        sidebarLayout(
-                sidebarPanel(
-                        sliderInput("sliderCarat", "How many carats is the diamond?", 0.2, 4.0, value = 0.8),
-                        selectInput("selectCut", "What is the cut of the diamond?", c("Fair"="Fair","Good"="Good",
-                                "Very Good"="Very Good","Premium"="Premium", "Ideal"="Ideal")),
-                        selectInput("selectColor", "What is the color of the diamond?", 
-                                    c("D"="D","E"="E","F"="F","G"="G","H"="H",
-                                      "I"="I","J"="J")),
-                        checkboxInput("showModel1", "Show/Hide model for selected features", value = TRUE),
-                        checkboxInput("showModel2", "Show/Hide model for all diamonds", value = TRUE)
-                ),
-                mainPanel(
-                        plotOutput("plot1"),
-                        h3("Predicted price from selected features:"),
-                        textOutput("pred1"),
-                        h3("Predicted price from all diamonds:"),
-                        textOutput("pred2")
-                )
-        )
-))
+ggplot(diamonds, aes(x=carat, y=price, color = cut)) + geom_point()                    
 ```
