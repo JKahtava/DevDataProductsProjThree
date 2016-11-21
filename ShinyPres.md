@@ -7,11 +7,21 @@ autosize: true
 First Slide
 ========================================================
 
-Animated list
+This project developed a Shiny app which allows the user
+to predict the price of a diamond from the R `diamonds`
+data set.
 
-> 1. Point 1
-> 2. Point 2
-> 3. Point 3
+There are options in the Shiny app where the user can
+select the weight (carat) as the input parameter. The 
+prediction is based on carats. In addition, the app
+has pulldown menus for diamond cut and diamond color.
+These allow a comparison of how the predicted value
+of the diamond changes based on these parameters.
+
+The shiny app can be found at:
+
+https://jkahtava.shinyapps.io/devdataproductsprojthree/
+
 
 Slide With Code
 ========================================================
