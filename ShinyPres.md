@@ -11,12 +11,13 @@ This project developed a Shiny app which allows the user
 to predict the price of a diamond from the R `diamonds`
 data set.
 
-There are options in the Shiny app where the user can
-select the weight (carat) as the input parameter. The 
-prediction is based on carats. In addition, the app
-has pulldown menus for diamond cut and diamond color.
-These allow a comparison of how the predicted value
-of the diamond changes based on these parameters.
+The Shiny app uses linear regression modeling for estimating
+diamond value based on the weight (carat) selected by the user.
+In addition,  the app has two pulldown menus for diamond cut 
+and diamond color. These allow a comparison of how the predicted 
+value of the  diamond changes based on these parameters. The app 
+allows the user to try out different color-cut combinations for 
+each carat selected.
 
 The shiny app can be found at:
 
@@ -43,13 +44,14 @@ Output from server.R
 
 
 ```r
+diamonds <- diamonds[diamonds$cut == "Fair",] # subsetting which is done by server.R
 plot(diamonds$carat, diamonds$price, xlab = "Weight in carats", 
                      ylab = "Price", bty = "n", pch = 16,
                      xlim = c(0.1, 4), ylim = c(300, 20000))
 abline(model1, col = "red", lwd = 2)
 abline(model2, col = "green", lwd = 2)
-legend(25, 250, c("Model 1 Prediction", "Model 2 Prediction"), pch = 16, 
-                       col = c("red", "blue"), bty = "n", cex = 1.2)
+points(caratInput, pred1, col = "red", pch = 16, cex = 2)
+points(caratInput, pred2, col = "blue", pch = 16, cex = 2)
 ```
 Example plot with diamond cut = FAIR (red line)
 ========================================================
